@@ -8,24 +8,29 @@ function validarBolo($ingredientesPost){
 			$ovo = $farinha = $leite = $manteiga = $fermento = false;
 
 			foreach ($ingredientes as $key => $ingrediente) {
-				if($ingrediente == 'ovo'){
-					$ovo = true;
-				}
-				if($ingrediente == 'farinha'){
-					$farinha = true;
-				}
-				if($ingrediente == 'leite'){
-					$leite = true;
-				}
-				if($ingrediente == 'manteiga'){
-					$manteiga = true;
-				}
-				if($ingrediente == 'fermento'){
-					$fermento = true;
+				switch ($ingrediente) {
+					case 'ovo':
+						$ovo = true;
+						break;
+					case 'farinha':
+						$farinha = true;
+						break;
+					case 'leite':
+						$leite = true;
+						break;
+					case 'manteiga':
+						$manteiga = true;
+						break;
+					case 'fermento':
+						$fermento = true;
+						break;
 				}
 			}
 			if ($ovo && $farinha && $leite && $manteiga && $fermento) {
-				return '<h2>Bolo Aceito</h2>';
+				$resultado = 'Bolo Aceito.';
+			} else {
+				$resultado = 'Ingredientes incorreto.';
 			}
+			return $resultado;
 		}
 }
