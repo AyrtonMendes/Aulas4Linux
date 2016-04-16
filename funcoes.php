@@ -34,3 +34,28 @@ function validarBolo($ingredientesPost){
 			return $resultado;
 		}
 }
+
+function geraTabela($arquivoCSV){
+	if (pathinfo($arquivoCSV, PATHINFO_EXTENSION) == "csv") {
+		$arquivo = file_get_contents($arquivoCSV);
+		$linhas = explode("\n", $arquivo);
+		$tabela = '<table border = "1"> <tr>';
+		foreach ($linhas as $key => $linha) {
+			if ($key == 0) {
+				$colunas = explode(";", $linha);
+				foreach ($colunas as  $coluna) {
+					$tabela = $tabela . "<td><strong> $coluna </strong></td>";
+				}
+			} else {	
+				$colunas = explode(";", $linha);
+				foreach ($colunas as  $coluna) {
+					$tabela = $tabela . "<td> $coluna </td>";
+				}
+			}
+			$tabela = $tabela . "</tr> <tr>";
+		}
+		return "$tabela </tr> </table>";
+	} else {
+		return "Arquivo Invalido";
+	}	
+}
