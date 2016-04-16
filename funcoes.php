@@ -1,5 +1,5 @@
 <?php
-
+/*Aula 1 : Aprender sobre condicionamentos*/
 function validarBolo($ingredientesPost){
 	if (array_key_exists('ingredientes', $ingredientesPost)) {
 			$ingredientes = explode("\n", $ingredientesPost['ingredientes']);
@@ -35,6 +35,7 @@ function validarBolo($ingredientesPost){
 		}
 }
 
+/*Aula 2 - Aprendendo sobre lacos repetitivos*/
 function geraTabela($arquivoCSV){
 	if (pathinfo($arquivoCSV, PATHINFO_EXTENSION) == "csv") {
 		$arquivo = file_get_contents($arquivoCSV);
