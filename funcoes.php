@@ -36,11 +36,11 @@ function validarBolo($ingredientesPost){
 }
 
 /*Aula 2 - Aprendendo sobre lacos repetitivos*/
-function geraTabela($arquivoCSV){
+function LeituraArquivoCSV($arquivoCSV){
 	if (pathinfo($arquivoCSV, PATHINFO_EXTENSION) == "csv") {
 		$arquivo = file_get_contents($arquivoCSV);
 		$linhas = explode("\n", $arquivo);
-		$tabela = '<table border = "1"> <tr>';
+		$tabela = '';
 		foreach ($linhas as $key => $linha) {
 			if ($key == 0) {
 				$colunas = explode(";", $linha);
@@ -55,8 +55,8 @@ function geraTabela($arquivoCSV){
 			}
 			$tabela = $tabela . "</tr> <tr>";
 		}
-		return "$tabela </tr> </table>";
+		return "<table border = '1'> <tr> $tabela </tr> </table>";
 	} else {
 		return "Arquivo Invalido";
-	}	
+	}	 
 }
